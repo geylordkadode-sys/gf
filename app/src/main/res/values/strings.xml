@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">berling marketHUB</string>
+    
+    <!-- Auth Strings -->
+    <string name="welcome_back">Welcome Back</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="login">Login</string>
+    <string name="email_label">Email Address</string>
+    <string name="password_label">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="dont_have_account">Don\'t have an account? Sign Up</string>
+    <string name="browse_as_guest">Browse as Guest</string>
+    
+    <!-- Profile Strings -->
+    <string name="complete_profile">Complete Your Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="profile">Profile</string>
+    <string name="name">Name</string>
+    <string name="country">Country</string>
+    <string name="location">Location</string>
+    <string name="website">Website</string>
+    <string name="social_media">Social Media Accounts</string>
+    <string name="instagram">Instagram Handle</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter/X</string>
+    
+    <!-- Home Strings -->
+    <string name="home">Home</string>
+    <string name="search_placeholder">Search for products, brands and more...</string>
+    <string name="shortcuts">Shortcuts</string>
+    <string name="featured_products">Featured Products</string>
+    <string name="see_all">See all</string>
+    <string name="popular">Popular</string>
+    <string name="women">Women</string>
+    <string name="men">Men</string>
+    <string name="beauty">Beauty</string>
+    <string name="electronics">Electronics</string>
+    
+    <!-- Common Strings -->
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="try_again">Try Again</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="logout">Logout</string>
+</resources>

@@ -1,0 +1,33 @@
+# Gradle
+.gradle/
+build/
+*.apk
+*.aab
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+app/build/
+*.jar
+*.zip
+
+# Local properties
+local.properties
+gradle.properties
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local

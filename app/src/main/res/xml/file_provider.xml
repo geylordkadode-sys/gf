@@ -1,0 +1,7 @@
+<!-- XML version 1.0 -->
+
+<!-- File Provider for sharing files -->
+<paths xmlns:android="http://schemas.android.com/apk/res-auto">
+    <cache-path name="cache" path="/"/>
+    <external-files-path name="external" path="/"/>
+</paths>
