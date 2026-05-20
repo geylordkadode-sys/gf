@@ -123,4 +123,196 @@ interface SupabaseApi {
         @Header("Authorization") token: String,
         @Query("eventName") eventName: String? = null
     ): ApiResponse<List<AnalyticsEventEntity>>
+
+    // Reviews
+    @GET("rest/v1/reviews")
+    suspend fun getReviews(
+        @Query("product_id") productId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/reviews")
+    suspend fun createReview(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    // Review Replies
+    @GET("rest/v1/review_replies")
+    suspend fun getReviewReplies(
+        @Query("review_id") reviewId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/review_replies")
+    suspend fun createReviewReply(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    // Follows
+    @GET("rest/v1/follows")
+    suspend fun getFollows(
+        @Query("follower_id") followerId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/follows")
+    suspend fun addFollow(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @DELETE("rest/v1/follows/{id}")
+    suspend fun removeFollow(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Unit
+
+    // Notifications
+    @GET("rest/v1/notifications")
+    suspend fun getNotifications(
+        @Query("user_id") userId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/notifications")
+    suspend fun createNotification(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @PATCH("rest/v1/notifications/{id}")
+    suspend fun updateNotification(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    // Reports
+    @POST("rest/v1/reports")
+    suspend fun createReport(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @GET("rest/v1/reports")
+    suspend fun getReports(
+        @Query("reporter_id") reporterId: String
+    ): List<Map<String, Any>>
+
+    @PATCH("rest/v1/reports/{id}")
+    suspend fun updateReport(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    // Bans
+    @GET("rest/v1/bans")
+    suspend fun getBans(
+        @Query("user_id") userId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/bans")
+    suspend fun createBan(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @PATCH("rest/v1/bans/{id}")
+    suspend fun updateBan(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    // KYC Applications
+    @GET("rest/v1/kyc_applications")
+    suspend fun getKYCApplication(
+        @Query("user_id") userId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/kyc_applications")
+    suspend fun createKYCApplication(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @PATCH("rest/v1/kyc_applications/{id}")
+    suspend fun updateKYCApplication(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @GET("rest/v1/kyc_applications?status=eq.pending")
+    suspend fun getPendingKYCApplications(
+        @Header("Authorization") token: String
+    ): List<Map<String, Any>>
+
+    // Device Accounts
+    @GET("rest/v1/device_accounts")
+    suspend fun getDeviceAccounts(
+        @Query("device_id") deviceId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/device_accounts")
+    suspend fun createDeviceAccount(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @DELETE("rest/v1/device_accounts/{id}")
+    suspend fun deleteDeviceAccount(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Unit
+
+    // Conversations
+    @GET("rest/v1/conversations")
+    suspend fun getConversations(
+        @Query("participant1_id") userId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/conversations")
+    suspend fun createConversation(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @PATCH("rest/v1/conversations/{id}")
+    suspend fun updateConversation(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    // Blocked Users
+    @GET("rest/v1/blocked_users")
+    suspend fun getBlockedUsers(
+        @Query("blocker_id") blockerId: String
+    ): List<Map<String, Any>>
+
+    @POST("rest/v1/blocked_users")
+    suspend fun blockUser(
+        @Header("Authorization") token: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
+
+    @DELETE("rest/v1/blocked_users/{id}")
+    suspend fun unblockUser(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Unit
+
+    // Rate Limits
+    @GET("rest/v1/rate_limits")
+    suspend fun getRateLimit(
+        @Query("user_id") userId: String,
+        @Query("feature") feature: String
+    ): List<Map<String, Any>>
+
+    @PATCH("rest/v1/rate_limits/{id}")
+    suspend fun updateRateLimit(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body request: Map<String, Any>
+    ): Map<String, Any>
 }

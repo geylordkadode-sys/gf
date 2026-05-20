@@ -17,6 +17,16 @@ object SupabaseConfig {
     const val MESSAGES_TABLE = "messages"
     const val FAVORITES_TABLE = "favorites"
     const val REVIEWS_TABLE = "reviews"
+    const val REVIEW_REPLIES_TABLE = "review_replies"
+    const val FOLLOWS_TABLE = "follows"
+    const val NOTIFICATIONS_TABLE = "notifications"
+    const val REPORTS_TABLE = "reports"
+    const val BANS_TABLE = "bans"
+    const val KYC_APPLICATIONS_TABLE = "kyc_applications"
+    const val DEVICE_ACCOUNTS_TABLE = "device_accounts"
+    const val CONVERSATIONS_TABLE = "conversations"
+    const val BLOCKED_USERS_TABLE = "blocked_users"
+    const val RATE_LIMITS_TABLE = "rate_limits"
     
     // Storage buckets
     const val PRODUCTS_BUCKET = "products"
@@ -143,4 +153,54 @@ object SupabaseEndpoints {
     // Reviews
     fun getReviews(productId: String) = "/rest/v1/${SupabaseConfig.REVIEWS_TABLE}?product_id=eq.$productId"
     fun createReview() = "/rest/v1/${SupabaseConfig.REVIEWS_TABLE}"
+    fun getReviewReplies(reviewId: String) = "/rest/v1/${SupabaseConfig.REVIEW_REPLIES_TABLE}?review_id=eq.$reviewId"
+    fun createReviewReply() = "/rest/v1/${SupabaseConfig.REVIEW_REPLIES_TABLE}"
+
+    // Follows
+    fun getFollows(followerId: String) = "/rest/v1/${SupabaseConfig.FOLLOWS_TABLE}?follower_id=eq.$followerId"
+    fun addFollow() = "/rest/v1/${SupabaseConfig.FOLLOWS_TABLE}"
+    fun removeFollow(followId: String) = "/rest/v1/${SupabaseConfig.FOLLOWS_TABLE}?id=eq.$followId"
+
+    // Notifications
+    fun getNotifications(userId: String) = "/rest/v1/${SupabaseConfig.NOTIFICATIONS_TABLE}?user_id=eq.$userId"
+    fun createNotification() = "/rest/v1/${SupabaseConfig.NOTIFICATIONS_TABLE}"
+    fun updateNotification(id: String) = "/rest/v1/${SupabaseConfig.NOTIFICATIONS_TABLE}?id=eq.$id"
+
+    // Reports
+    fun createReport() = "/rest/v1/${SupabaseConfig.REPORTS_TABLE}"
+    fun getReports(reporterId: String) = "/rest/v1/${SupabaseConfig.REPORTS_TABLE}?reporter_id=eq.$reporterId"
+    fun updateReport(id: String) = "/rest/v1/${SupabaseConfig.REPORTS_TABLE}?id=eq.$id"
+
+    // Bans
+    fun getBans(userId: String) = "/rest/v1/${SupabaseConfig.BANS_TABLE}?user_id=eq.$userId"
+    fun createBan() = "/rest/v1/${SupabaseConfig.BANS_TABLE}"
+    fun updateBan(id: String) = "/rest/v1/${SupabaseConfig.BANS_TABLE}?id=eq.$id"
+
+    // KYC Applications
+    fun getKycApplication(userId: String) = "/rest/v1/${SupabaseConfig.KYC_APPLICATIONS_TABLE}?user_id=eq.$userId"
+    fun createKycApplication() = "/rest/v1/${SupabaseConfig.KYC_APPLICATIONS_TABLE}"
+    fun updateKycApplication(id: String) = "/rest/v1/${SupabaseConfig.KYC_APPLICATIONS_TABLE}?id=eq.$id"
+
+    // Device Accounts
+    fun getDeviceAccounts(deviceId: String) = "/rest/v1/${SupabaseConfig.DEVICE_ACCOUNTS_TABLE}?device_id=eq.$deviceId"
+    fun createDeviceAccount() = "/rest/v1/${SupabaseConfig.DEVICE_ACCOUNTS_TABLE}"
+    fun deleteDeviceAccount(id: String) = "/rest/v1/${SupabaseConfig.DEVICE_ACCOUNTS_TABLE}?id=eq.$id"
+
+    // Conversations
+    fun getConversations(userId: String) = "/rest/v1/${SupabaseConfig.CONVERSATIONS_TABLE}?participant1_id=eq.$userId"
+    fun createConversation() = "/rest/v1/${SupabaseConfig.CONVERSATIONS_TABLE}"
+    fun updateConversation(id: String) = "/rest/v1/${SupabaseConfig.CONVERSATIONS_TABLE}?id=eq.$id"
+
+    // Messages (already present, but ensure it uses the correct table name)
+    fun getMessages(conversationId: String) = "/rest/v1/${SupabaseConfig.MESSAGES_TABLE}?conversation_id=eq.$conversationId"
+    fun sendMessage() = "/rest/v1/${SupabaseConfig.MESSAGES_TABLE}"
+
+    // Blocked Users
+    fun getBlockedUsers(blockerId: String) = "/rest/v1/${SupabaseConfig.BLOCKED_USERS_TABLE}?blocker_id=eq.$blockerId"
+    fun blockUser() = "/rest/v1/${SupabaseConfig.BLOCKED_USERS_TABLE}"
+    fun unblockUser(id: String) = "/rest/v1/${SupabaseConfig.BLOCKED_USERS_TABLE}?id=eq.$id"
+
+    // Rate Limits
+    fun getRateLimit(userId: String, feature: String) = "/rest/v1/${SupabaseConfig.RATE_LIMITS_TABLE}?user_id=eq.$userId&feature=eq.$feature"
+    fun updateRateLimit(id: String) = "/rest/v1/${SupabaseConfig.RATE_LIMITS_TABLE}?id=eq.$id"
 }
