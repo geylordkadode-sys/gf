@@ -315,4 +315,9 @@ interface SupabaseApi {
         @Path("id") id: String,
         @Body request: Map<String, Any>
     ): Map<String, Any>
+
+    /**
+     * Observe a table in real-time using Supabase Realtime
+     */
+    fun observeTableRealtime(tableName: String): kotlinx.coroutines.flow.Flow<Map<String, Any>>
 }

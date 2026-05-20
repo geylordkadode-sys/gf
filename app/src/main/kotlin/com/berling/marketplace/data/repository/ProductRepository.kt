@@ -259,4 +259,47 @@ class ProductRepository @Inject constructor(
         val count = getSellerProductCount(sellerId)
         return count < 5 // Max 5 products per seller
     }
+
+    /**
+     * Observe products table in real-time from Supabase
+     */
+    fun observeProductsRealtime(): Flow<ProductEntity> = kotlinx.coroutines.flow.flow {
+        try {
+            api.observeTableRealtime("products").collect { data ->
+                // Map the dynamic map from Supabase to ProductEntity
+                val product = ProductEntity(
+                    id = data["id"]?.toString() ?: "",
+                    sellerId = data["seller_id"]?.toString() ?: "",
+                    sellerName = data["seller_name"]?.toString() ?: "",
+                    sellerPhotoUrl = data["seller_photo_url"]?.toString() ?: "",
+                    title = data["title"]?.toString() ?: "",
+                    description = data["description"]?.toString() ?: "",
+                    price = data["price"]?.toString()?.toDoubleOrNull() ?: 0.0,
+                    imageUrl = data["image_url"]?.toString() ?: "",
+                    imageUrls = data["image_urls"]?.toString() ?: "",
+                    category = data["category"]?.toString() ?: "",
+                    brand = data["brand"]?.toString() ?: "",
+                    condition = data["condition"]?.toString() ?: "",
+                    location = data["location"]?.toString() ?: "",
+                    latitude = data["latitude"]?.toString()?.toDoubleOrNull() ?: 0.0,
+                    longitude = data["longitude"]?.toString()?.toDoubleOrNull() ?: 0.0,
+                    country = data["country"]?.toString() ?: "",
+                    city = data["city"]?.toString() ?: "",
+                    deliveryOptions = data["delivery_options"]?.toString() ?: "",
+                    returnPolicy = data["return_policy"]?.toString() ?: "",
+                    tags = data["tags"]?.toString() ?: "",
+                    productAttributes = data["product_attributes"]?.toString() ?: "",
+                    isNew = data["is_new"]?.toString()?.toBoolean() ?: true,
+                    boostListing = data["boost_listing"]?.toString()?.toBoolean() ?: false,
+                    discountPrice = data["discount_price"]?.toString()?.toDoubleOrNull(),
+                    uploadStatus = "completed",
+                    isSynced = true,
+                    createdAt = data["created_at"]?.toString() ?: System.currentTimeMillis().toString()
+                )
+                emit(product)
+            }
+        } catch (e: Exception) {
+            // Log error
+        }
+    }
 }
